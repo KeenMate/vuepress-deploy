@@ -11,6 +11,12 @@ LABEL "maintainer"="Jenkey2011 <jenkey2011@163.com>"
 
 RUN apk add --no-cache git jq
 
+run apk --no-cache add --virtual native-deps \
+  g++ gcc libgcc libstdc++ linux-headers make python && \
+  npm install --quiet node-gyp -g &&\
+  npm install --quiet && \
+  apk del native-deps
+
 RUN npm uninstall -g node-sass && npm install -g node-sass --sass-binary-name=linux-x64-57
 
 COPY entrypoint.sh /entrypoint.sh
