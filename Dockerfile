@@ -11,7 +11,7 @@ LABEL "maintainer"="Jenkey2011 <jenkey2011@163.com>"
 
 RUN apk add --no-cache git jq
 
-RUN npm uninstall node-sass && npm install node-sass --sass-binary-name=linux-x64-57
+RUN npm uninstall -g node-sass && npm install -g node-sass --sass-binary-name=linux-x64-57
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
