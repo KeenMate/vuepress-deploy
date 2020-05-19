@@ -1,4 +1,4 @@
-FROM node:12.16-stretch as base
+FROM node:12.16.3-alpine as base
 
 LABEL "com.github.actions.name"="Vuepress deploy"
 LABEL "com.github.actions.description"="A GitHub Action to build and deploy Vuepress sites to GitHub Pages"
