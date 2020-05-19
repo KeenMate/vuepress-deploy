@@ -10,8 +10,8 @@ apk add --no-cache --virtual .gyp \
   python \
   make \
   g++ \
-  && npm install \
-  node-sass --sass-binary-name=linux-x64-57 \
+  && npm rebuild \
+  node-sass \
   && apk del .gyp
 
 # Build vuepress project
