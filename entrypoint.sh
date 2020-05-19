@@ -4,6 +4,16 @@ set -e
 
 echo '' # see https://github.com/actions/toolkit/issues/168
 
+
+
+apk add --no-cache --virtual .gyp \
+  python \
+  make \
+  g++ \
+  && npm install \
+  node-sass --sass-binary-name=linux-x64-57 \
+  && apk del .gyp
+
 # Build vuepress project
 echo "==> Start building \n $BUILD_SCRIPT"
 eval "$BUILD_SCRIPT"
