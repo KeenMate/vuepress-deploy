@@ -10,14 +10,16 @@ LABEL "homepage"="https://github.com/jenkey2011/vuepress-deploy"
 LABEL "maintainer"="Jenkey2011 <jenkey2011@163.com>"
 
 RUN apk add --no-cache git jq
+ 
+RUN apk add --no-cache --virtual .gyp \
+        python \
+        make \
+        g++ \
+    && npm install \
+        node-sass --sass-binary-name=linux-x64-57 -g \
+    && apk del .gyp
 
-run apk --no-cache add --virtual native-deps \
-  g++ gcc libgcc libstdc++ linux-headers make python && \
-  npm install --quiet node-gyp -g &&\
-  npm install --quiet && \
-  apk del native-deps
-
-RUN npm uninstall -g node-sass && npm install -g node-sass --sass-binary-name=linux-x64-57
+# RUN npm uninstall -g node-sass && npm install -g node-sass --sass-binary-name=linux-x64-57
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
