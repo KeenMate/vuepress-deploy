@@ -11,13 +11,13 @@ LABEL "maintainer"="Jenkey2011 <jenkey2011@163.com>"
 
 RUN apk add --no-cache git jq
  
-RUN apk add --no-cache --virtual .gyp \
-        python \
-        make \
-        g++ \
-    && npm install \
-        node-sass --sass-binary-name=linux-x64-57 -g \
-    && apk del .gyp
+# RUN apk add --no-cache --virtual .gyp \
+#         python \
+#         make \
+#         g++ \
+#     && npm install \
+#         node-sass --sass-binary-name=linux-x64-57 -g \
+#     && apk del .gyp
 
 # RUN npm uninstall -g node-sass && npm install -g node-sass --sass-binary-name=linux-x64-57
 
